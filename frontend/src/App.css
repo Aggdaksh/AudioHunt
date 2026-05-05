@@ -1,0 +1,150 @@
+.App {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.glass-container {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 3rem 2rem;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(to right, #60a5fa, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+p.subtitle {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  margin-bottom: 2.5rem;
+}
+
+.test-btn {
+  background: transparent;
+  border: 1px solid var(--glass-border);
+  color: var(--text-muted);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  margin-bottom: 2rem;
+  transition: all 0.2s ease;
+  font-family: var(--font-family);
+}
+
+.test-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Microphone Button Styles */
+.mic-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem 0;
+  height: 150px;
+}
+
+.mic-btn {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, var(--accent-color), #2563eb);
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 10px 25px var(--accent-glow);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 10;
+}
+
+.mic-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 35px var(--accent-glow);
+}
+
+.mic-btn.recording {
+  background: linear-gradient(135deg, var(--danger-color), #dc2626);
+  box-shadow: 0 10px 25px var(--danger-glow);
+  animation: micPulse 1.5s infinite alternate;
+}
+
+.mic-btn:disabled {
+  background: var(--secondary-bg);
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+  color: var(--text-muted);
+}
+
+/* Ripple Effect */
+.ripple {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: var(--danger-glow);
+  animation: rippleAnim 2s infinite ease-out;
+  pointer-events: none;
+}
+
+.ripple:nth-child(2) {
+  animation-delay: 0.6s;
+}
+
+.ripple:nth-child(3) {
+  animation-delay: 1.2s;
+}
+
+@keyframes micPulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.05); }
+}
+
+@keyframes rippleAnim {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+.status-text {
+  font-size: 1.2rem;
+  font-weight: 500;
+  height: 24px;
+  margin-top: 1rem;
+}
+
+.status-recording {
+  color: var(--danger-color);
+}
